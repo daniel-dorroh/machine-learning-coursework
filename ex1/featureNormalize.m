@@ -1,4 +1,4 @@
-function [X_norm, mu, sigma] = featureNormalize(X)
+function [normalized_x, mu, sigma] = featureNormalize(X)
 %FEATURENORMALIZE Normalizes the features in X 
 %   FEATURENORMALIZE(X) returns a normalized version of X where
 %   the mean value of each feature is 0 and the standard deviation
@@ -6,9 +6,10 @@ function [X_norm, mu, sigma] = featureNormalize(X)
 %   working with learning algorithms.
 
 % You need to set these values correctly
-X_norm = X;
-mu = zeros(1, size(X, 2));
-sigma = zeros(1, size(X, 2));
+normalized_x = X;
+[x_row_count, x_column_count] = size(X);
+mu = zeros(1, x_column_count);
+sigma = zeros(1, x_column_count);
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: First, for each feature dimension, compute the mean
@@ -26,13 +27,8 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
-
-
-
-
-
-
-
+mu = mean(X);
+sigma = std(X);
 
 % ============================================================
 
