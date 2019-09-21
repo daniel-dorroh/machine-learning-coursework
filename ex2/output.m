@@ -1,4 +1,4 @@
-function out = output(partId = '1')
+function out = output(partId = '2')
   % Random Test Cases
   X = [ones(20,1) (exp(1) * sin(1:1:20))' (exp(0.5) * cos(1:1:20))'];
   y = sin(X(:,1) + X(:,2)) > 0;
@@ -6,7 +6,8 @@ function out = output(partId = '1')
     sigX = sigmoid(X);
     out = sprintf('%0.5f ', sigX);
   elseif partId == '2'
-    out = sprintf('%0.5f ', costFunction([0.25 0.5 -0.5]', X, y));
+    costResult = costFunction([0.25 0.5 -0.5]', X, y);
+    out = sprintf('%0.5f ', costResult);
   elseif partId == '3'
     [cost, grad] = costFunction([0.25 0.5 -0.5]', X, y);
     out = sprintf('%0.5f ', grad);
