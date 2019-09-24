@@ -20,7 +20,7 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
   L = eye(length(theta));
   L(1, 1) = 0;
   [nonreg_J, nonreg_grad] = costFunction(theta, X, y);
-  J = nonreg_J + lambda / (2 * m) * theta' * theta;
+  J = nonreg_J + lambda / (2 * m) * theta' * (L * theta);
   grad = nonreg_grad + lambda / m * L * theta;
 
   % =============================================================

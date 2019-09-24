@@ -14,8 +14,7 @@ function p = predict(theta, X)
   %               your learned logistic regression parameters. 
   %               You should set p to a vector of 0's and 1's
   %
-  p = (X * theta) >= 0.5;
+  p = fix((sigmoid(X * theta) >= 0.5));
   % =========================================================================
-
 
 end

@@ -20,7 +20,7 @@ function [J, grad] = costFunction(theta, X, y)
   % Note: grad should have the same dimensions as theta
   %
   hypothesis = X * theta;
-  J = 1 / m * (-y' * log(sigmoid(hypothesis)) - transpose(1 - y) * log(1 - hypothesis));
+  J = 1 / m * (-y' * log(sigmoid(hypothesis)) - transpose(1 - y) * log(1 - sigmoid(hypothesis)));
   grad = 1 / m * X' * (sigmoid(hypothesis) - y);
   % =============================================================
 
