@@ -37,14 +37,13 @@ grad = zeros(size(theta));
 %
 
 
-
-
-
-
-
-
-
-
+  z = X * theta;
+  nonreg_J = 1 / m * (-y' * log(sigmoid(z)) - transpose(1 - y) * log(1 - sigmoid(z)));
+  nonreg_grad = 1 / m * X' * (sigmoid(z) - y);
+  L = eye(length(theta));
+  L(1, 1) = 0;
+  J = nonreg_J + lambda / (2 * m) * theta' * (L * theta);
+  grad = nonreg_grad + lambda / m * L * theta;
 % =============================================================
 
 grad = grad(:);
