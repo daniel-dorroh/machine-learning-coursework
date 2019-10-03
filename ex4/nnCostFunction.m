@@ -71,16 +71,21 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
   J = J / m;
 
   theta_sum = 0;
+  unbiased_Theta1 = Theta1;
+  unbiased_Theta1(:, 1) = 0;
 
   for i = 1:size(Theta1, 2),
     for j = 1:size(Theta1, 1),
-      theta_sum = theta_sum + (Theta1(j, i) ^ 2);
+      theta_sum = theta_sum + (unbiased_Theta1(j, i) ^ 2);
     end;
   end;
 
+  unbiased_Theta2 = Theta2;
+  unbiased_Theta2(:, 1) = 0;
+
   for i = 1:size(Theta2, 2),
     for j = 1:size(Theta2, 1),
-      theta_sum = theta_sum + (Theta2(j, i) ^ 2);
+      theta_sum = theta_sum + (unbiased_Theta2(j, i) ^ 2);
     end;
   end;
 
