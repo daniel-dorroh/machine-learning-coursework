@@ -60,13 +60,14 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
   a_2 = [ones(size(z_2, 1), 1) sigmoid(z_2)];
   z_3 = a_2 * Theta2';
   h = sigmoid(z_3);
-  
+
   for i = 1:m,
     for k = 1:label_count,
-      c = y == k;
-      J = J - c(i) * log(h(i, k)) - (1 - c(i)) * log(1 - h(i, k));
+      bin_y = y == k;
+      J = J - bin_y(i) * log(h(i, k)) - (1 - bin_y(i)) * log(1 - h(i, k));
     end;
   end;
+
   J = J / m;
 
   theta_sum = 0;
