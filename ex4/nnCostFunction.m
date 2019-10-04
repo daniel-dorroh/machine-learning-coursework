@@ -91,7 +91,28 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
 
   J = J + lambda / (2 * m) * theta_sum;
 
+  for t = 1:m,
+    
+    a_1 = transpose(X(t, :));
+    z_2 = Theta1 * a_1;
+    a_2 = [1; sigmoid(z_2)];
+    z_3 = Theta2 * a_2;
+    h = sigmoid(z_3);
 
+    d_3 = zeros(length(h), 1);
+
+    for k = 1:label_count,
+      bin_y = y(t) == k;
+      d_3(k) = h(k) - bin_y;
+    end;
+
+    d_2_p = Theta2' * d_3;
+    d_2 = d_2_p(2:end) .* sigmoidGradient(z_2);
+
+    Theta2_grad = Theta2_grad + d_3 * a_2';
+    Theta1_grad = Theta1_grad + d_2 * a_1';
+
+  end;
 
 
 
@@ -113,7 +134,7 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
   % =========================================================================
 
   % Unroll gradients
-  grad = [Theta1_grad(:) ; Theta2_grad(:)];
+  grad = [Theta1_grad(:) ; Theta2_grad(:)] / m;
 
 
 end
