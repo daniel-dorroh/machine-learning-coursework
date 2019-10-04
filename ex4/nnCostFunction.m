@@ -114,6 +114,21 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
 
   end;
 
+  Theta1_grad = Theta1_grad / m;
+  Theta2_grad = Theta2_grad / m;
+
+  for i = 1:size(Theta1, 1),
+    for j = 2:size(Theta1, 2),
+      Theta1_grad(i, j) = Theta1_grad(i, j) + lambda / m * Theta1(i, j);
+    end;
+  end;
+
+  for i = 1:size(Theta2, 1),
+    for j = 2:size(Theta2, 2),
+      Theta2_grad(i, j) = Theta2_grad(i, j) + lambda / m * Theta2(i, j);
+    end;
+  end;
+
 
 
 
@@ -134,7 +149,7 @@ function [J grad] = nnCostFunction(nn_params, input_layer_size, hidden_layer_siz
   % =========================================================================
 
   % Unroll gradients
-  grad = [Theta1_grad(:) ; Theta2_grad(:)] / m;
+  grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
 end
