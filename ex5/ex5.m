@@ -83,6 +83,7 @@ input('Press enter to continue');
 
 %  Train linear regression with lambda = 0
 lambda = 0;
+xp = [ones(m, 1) X];
 [theta] = trainLinearReg([ones(m, 1) X], y, lambda);
 
 %  Plot fit over the data
