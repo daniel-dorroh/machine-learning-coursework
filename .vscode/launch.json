@@ -9,9 +9,9 @@
             "type": "OctaveDebugger",
             "request": "launch",
             "name": "Function or file to execute.",
-            "program": "ex6_spam",
+            "program": "ex7",
             "octave": "octave-cli",
-            "sourceFolder": "${workspaceFolder}/ex6"
+            "sourceFolder": "${workspaceFolder}/ex7"
         }
     ]
 }
