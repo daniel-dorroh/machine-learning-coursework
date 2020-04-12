@@ -21,7 +21,18 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i = 1:size(X,1)
+  x = X(i, :);
+  min_displacement = 100000;
+  for j = 1:K
+    diff = x - centroids(j, :)
+    displacement = diff * diff';
+    if (displacement < min_displacement)
+      min_displacement = displacement;
+      idx(i) = j;
+    endif
+  end
+end
 
 
 
