@@ -26,12 +26,17 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
-
+for i = 1:K
+  member_count = 0;
+  centroid = zeros(1, n);
+  for j = 1:m
+    if (idx(j) == i)
+      member_count++;
+      centroid += X(j, :);
+    endif
+  end
+  centroids(i, :) = centroid / member_count;
+end
 
 % =============================================================
 
