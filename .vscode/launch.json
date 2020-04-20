@@ -9,9 +9,9 @@
             "type": "OctaveDebugger",
             "request": "launch",
             "name": "Function or file to execute.",
-            "program": "ex7_pca",
+            "program": "ex8",
             "octave": "octave-cli",
-            "sourceFolder": "${workspaceFolder}/ex7"
+            "sourceFolder": "${workspaceFolder}/ex8"
         }
     ]
 }
